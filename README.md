@@ -18,11 +18,11 @@ The Blogology is type of website that is updated regularly with new content. It 
 
 ---
 ## User Stories 
-:white_medium_small_square:&nbsp;&nbsp;User would be able to create an account with the following name,email, and password.
-:white_medium_small_square:&nbsp;&nbsp;User would login with their email and password. Then it would send to the user home-page.
-:white_medium_small_square:&nbsp;&nbsp;On the home-page user is able to generate a writing prompt, write the prompt, and edit their about me. 
-:white_medium_small_square:&nbsp;&nbsp;User could also be able to see previous writing prompts. 
-:white_medium_small_square:&nbsp;&nbsp;User could also post photos of their own. 
+:white_medium_small_square:User would be able to create an account with the following name,email, and password.
+:white_medium_small_square:User would login with their email and password. Then it would send to the user home-page.
+:white_medium_small_square:On the home-page user is able to generate a writing prompt, write the prompt, and edit their about me. 
+:white_medium_small_square:User could also be able to see previous writing prompts. 
+:white_medium_small_square:User could also post photos of their own. 
 
 ---
 ## Routes
