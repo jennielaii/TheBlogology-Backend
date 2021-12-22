@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const routesReport = require('rowdy-logger').begin(app);
-const {db} = require("./config/db");
 
 app.use(require('morgan')('tiny'));
 app.use(express.json());
