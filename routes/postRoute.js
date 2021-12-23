@@ -10,7 +10,7 @@ const {
   editBlogForm,
   updateBlog,
   deleteBlog,
-} = require('../controllers/blogpostController');
+} = require('../controllers/postController');
 
 router.get('/', getAllBlogs);
 router.get('/new', newBlogForm);

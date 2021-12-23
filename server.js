@@ -6,7 +6,7 @@ app.use(require('morgan')('tiny'));
 app.use(express.json());
 app.use(require('cors')());
 
-const blogpostRoutes = require('./routes/blogpostRoute')
+const blogpostRoutes = require('./routes/postRoute')
 app.use('/post', blogpostRoutes)
 
 const userRoutes = require('./routes/userRoute')
