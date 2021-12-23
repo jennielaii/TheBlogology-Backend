@@ -1,9 +1,10 @@
 const Blog = require('../models/post');
+const models = require('../models') 
 
 const getAllBlogs = async (req, res) => {
     try {
-      const blogs = await Blog.findAll({ raw: true });
-      res.render('index', { blogs });
+      const blogs = await models.post.findAll();
+      res.json({ blogs });
     } catch (error) {
       console.log(error);
     }
@@ -14,22 +15,18 @@ const getAllBlogs = async (req, res) => {
   };
   
   const addNewBlog = async (req, res) => {
-    const { title, image, body } = req.body;
-    const newBlog = { title, image, body };
-    newBlog.body = req.sanitize(newBlog.body);
+    const newBlog = { userid: req.body.userid, title: req.body.title, description: req.body.description }
     try {
-      await Blog.create(newBlog);
-      res.redirect('/blogs');
+      await models.post.create(newBlog);
     } catch (error) {
       console.log(error);
-      res.redirect('/blogs/new');
     }
   };
   
   const showMoreBlogInfo = async (req, res) => {
     const id = req.params.id;
     try {
-      const blog = await Blog.findByPk(id);
+      const blog = await models.post.findByPk(id);
       res.render('show', { blog });
     } catch (error) {
       console.log(error);
@@ -39,7 +36,7 @@ const getAllBlogs = async (req, res) => {
   const editBlogForm = async (req, res) => {
     const id = req.params.id;
     try {
-      const blog = await Blog.findByPk(id);
+      const blog = await models.post.findByPk(id);
       res.render('edit', { blog });
     } catch (error) {
       res.redirect(`/blogs/${id}/edit`);
@@ -48,12 +45,9 @@ const getAllBlogs = async (req, res) => {
   
   const updateBlog = async (req, res) => {
     const id = req.params.id;
-    const { title, image, body } = req.body;
-    const updatedBlog = { title, image, body };
-    updatedBlog.body = req.sanitize(updatedBlog.body);
+    const updatedBlog = { title: req.body.title, description: req.body.description };
     try {
-      await Blog.update(updatedBlog, { where: { id } });
-      res.redirect(`/blogs/${id}`);
+      await models.post.update(updatedBlog, { where: { id: id  } });
     } catch (error) {
       console.log(error);
     }
@@ -62,8 +56,7 @@ const getAllBlogs = async (req, res) => {
   const deleteBlog = async (req, res) => {
     const id = req.params.id;
     try {
-      await Blog.destroy({ where: { id } });
-      res.redirect('/blogs');
+      await models.post.destroy({ where: { id } });
     } catch (error) {
       console.log(error);
     }
